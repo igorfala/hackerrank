@@ -6,7 +6,8 @@ def dijkstra(graph, s, edges):
     final_distance = {}
     while len(final_distance) < edges:
         #print distance_so_far, final_distance, edges, len(final_distance)
-        temp = [g for g in distance_so_far if distance_so_far[g] == min(distance_so_far.values())][0]
+        m = min(distance_so_far.values())
+        temp = [g for g in distance_so_far if distance_so_far[g] == m][0]
         final_distance[temp] = distance_so_far[temp]
         del distance_so_far[temp]
         for neighbor in graph[temp]:
@@ -41,3 +42,4 @@ for _ in xrange(t):
     verts = sorted([i for i in graph.keys() if i != s ])
     distances = [distances[i] if i in distances else -1 for i in verts]
     print " ".join([str(i) for i in distances])
+    
